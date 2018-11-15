@@ -22,6 +22,10 @@ tests_units: ## run only unit tests
 tests_acceptances: ## run only acceptance tests
 	. venv/bin/activate; python -u -m unittest discover "$(TEST_MODULE)/acceptances"
 
+.PHONY: tox
+tox: ## run tests described in tox.ini
+	. venv/bin/activate; tox
+
 .PHONY: lint
 lint: ## run pylint
 	. venv/bin/activate; pylint --rcfile=.pylintrc $(APPLICATION_MODULE)
