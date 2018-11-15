@@ -17,4 +17,3 @@ class StdinClick(Stdin):
             stdin_content = None
 
         return stdin_content
-

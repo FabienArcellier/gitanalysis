@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
-class Stdin(object):
+class Stdin:
     __metaclass__ = ABCMeta
 
     @abstractmethod

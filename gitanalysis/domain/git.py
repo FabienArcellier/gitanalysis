@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
-class Git(object):
+class Git:
     __metaclass__ = ABCMeta
 
     @abstractmethod

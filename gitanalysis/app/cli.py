@@ -18,6 +18,7 @@ def cli():
 def changelog(use_gitlog):
     git = GitShell()
     stdin = StdinClick()
+    changelog_ = Changelog()
 
     if use_gitlog or not stdin.active():
         git_log_raw = git.log()
@@ -26,9 +27,8 @@ def changelog(use_gitlog):
         git_log_raw = stdin_content
 
     if git_log_raw is not None:
-        changes = Changelog()
-        changelog = changes.from_gitlog(git_log_raw)
-        sys.stdout.write(changelog.to_csv(index=False))
+        git_changelog = changelog_.fromGitlog(git_log_raw)
+        sys.stdout.write(git_changelog.to_csv(index=False))
 
 
 cli.add_command(changelog)
