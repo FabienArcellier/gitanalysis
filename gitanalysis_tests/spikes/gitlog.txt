@@ -1,0 +1,13 @@
+-79e6be4;Fabien Arcellier;Mon Jul 23 13:37:45 2018 +0200
+2       2       .env.dist
+1       1       VERSION.in
+2       2       app/config/parameters.php
+4       4       src/AppBundle/Resources/config/services.yml
+2       2       src/Slidesearch/Infrastructures/SlidesearchStorage/IndexHandler.php
+-985d57e;Fabien Arcellier;Mon Jul 23 16:00:56 2018 +0200
+-80e5be4;Fabien Arcellier;Mon Jul 23 13:37:45 2018 +0200
+2       2       .env.dist
+1       1       VERSION.in
+2       2       app/config/parameters.php
+4       4       src/AppBundle/Resources/config/services.yml
+2       2       src/Slidesearch/Infrastructures/SlidesearchStorage/IndexHandler.php
