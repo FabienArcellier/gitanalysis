@@ -8,3 +8,4 @@ __pycache__
 venv
 *.egg-info
 requirements.txt
+/.tox

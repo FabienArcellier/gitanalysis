@@ -15,7 +15,7 @@ setup(
     ],
     entry_points = {
         'console_scripts': [
-            'gitanalysis = gitanalysis.cli:cli',
+            'gitanalysis = gitanalysis.app.cli:cli',
         ],
     }
 )

@@ -35,7 +35,7 @@ class CliTest(unittest.TestCase):
         runner = CliRunner()
 
         # Acts
-        result = runner.invoke(cli, ['changelog'])
+        result = runner.invoke(cli, ['changelog', '--use-gitlog'])
 
         # Assert
         self.assertEqual(result.exit_code, 0)
