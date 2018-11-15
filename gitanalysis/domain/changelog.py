@@ -1,8 +1,10 @@
 # pylint: disable=import-error
 
 from io import StringIO
+import re
 
 import pandas as pd
+pd.set_option('mode.chained_assignment', None)
 
 
 class Changelog:
@@ -22,8 +24,10 @@ class Changelog:
         commit_info['date'] = pd.to_datetime(commit_info['date'])
 
         file_stats_marker = commits[~commits.index.isin(commit_info.index)]
-        file_stats = file_stats_marker['raw'].str.split(r"\s+", expand=True)
-        file_stats = file_stats.rename(columns={0: "insertions", 1: "deletions", 2: "filename"})
+        file_stats_marker["insertions"] = file_stats_marker['raw'].apply(insertions)
+        file_stats_marker["deletions"] = file_stats_marker['raw'].apply(deletions)
+        file_stats_marker["filename"] = file_stats_marker['raw'].apply(filename)
+        file_stats = file_stats_marker[["insertions", "deletions", "filename"]]
         file_stats['insertions'] = pd.to_numeric(file_stats['insertions'], errors='coerce')
         file_stats['deletions'] = pd.to_numeric(file_stats['deletions'], errors='coerce')
 
@@ -32,3 +36,12 @@ class Changelog:
         commit_data = commit_data.join(file_stats)
         commit_data.fillna(0)
         return commit_data
+
+def insertions(raw_line):
+    return re.split(r"\s+", raw_line)[0]
+
+def deletions(raw_line):
+    return re.split(r"\s+", raw_line)[1]
+
+def filename(raw_line):
+    return " ".join(re.split(r"\s+", raw_line)[2:])
