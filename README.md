@@ -1,4 +1,6 @@
-## Motivation
+## Gitanalysis
+
+[![Build Status](https://travis-ci.org/FabienArcellier/gitanalysis.svg?branch=master)](https://travis-ci.org/FabienArcellier/gitanalysis)
 
 transform a formatted log from git as csv file
 
@@ -48,6 +50,18 @@ You can run the application with the following command
 
 ```bash
 gitanalysis changelog
+```
+
+or with
+
+```bash
+gitanalysis changelog < gitlog.txt
+```
+
+or with
+
+```bash
+git log --pretty=format:'-%h;%an;%ad' --numstat | gitanalysis changelog
 ```
 
 ## Developper guideline
