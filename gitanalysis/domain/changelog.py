@@ -4,6 +4,8 @@ from io import StringIO
 import re
 
 import pandas as pd
+from pandas import DataFrame
+
 pd.set_option('mode.chained_assignment', None)
 
 
@@ -13,6 +15,12 @@ class Changelog:
     """
 
     def fromGitlog(self, gitlog):
+        """
+        :param gitlog: log reprentation from `git log --pretty=format:'-%h;%an;%ad' --numstat`
+
+        :rtype: str
+        :return: dateframe from git log injected information
+        """
         commits = pd.read_csv(StringIO(gitlog), header=None, names=['raw'])
 
         commit_marker = commits[commits['raw'].str.startswith("-", na=False)]
@@ -35,7 +43,7 @@ class Changelog:
         commit_data = commit_data[~commit_data.index.isin(commit_info.index)]
         commit_data = commit_data.join(file_stats)
         commit_data.fillna(0)
-        return commit_data
+        return commit_data.to_csv(index=False)
 
 def insertions(raw_line):
     return re.split(r"\s+", raw_line)[0]

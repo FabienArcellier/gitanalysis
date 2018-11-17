@@ -14,13 +14,13 @@ def cli():
 
 
 @click.command('changelog')
-@click.option('--use-gitlog', is_flag=True, flag_value=True, help='force the usage of git log command')
-def changelog(use_gitlog):
+@click.option('--use-git', is_flag=True, flag_value=True, help='force the usage of git on the current directory')
+def changelog(use_git):
     git = GitShell()
     stdin = StdinClick()
     changelog_ = Changelog()
 
-    if use_gitlog or not stdin.active():
+    if use_git or not stdin.active():
         git_log_raw = git.log()
     else:
         stdin_content = stdin.read()
@@ -28,7 +28,7 @@ def changelog(use_gitlog):
 
     if git_log_raw is not None:
         git_changelog = changelog_.fromGitlog(git_log_raw)
-        sys.stdout.write(git_changelog.to_csv(index=False))
+        sys.stdout.write(git_changelog)
 
 
 cli.add_command(changelog)

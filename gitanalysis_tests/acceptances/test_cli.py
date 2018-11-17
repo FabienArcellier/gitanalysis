@@ -24,7 +24,7 @@ class CliTest(unittest.TestCase):
                 result = runner.invoke(cli, ['changelog'], input=f.read())
 
                 # Assert
-                self.assertEqual(result.exit_code, 0)
+                self.assertEqual(result.exit_code, 0, msg=result.exception)
                 first_line = result.output.split('\n')[0]
                 second_line = result.output.split('\n')[1]
                 self.assertEqual('shorthash,author,date,insertions,deletions,filename', first_line)
@@ -35,9 +35,9 @@ class CliTest(unittest.TestCase):
         runner = CliRunner()
 
         # Acts
-        result = runner.invoke(cli, ['changelog', '--use-gitlog'])
+        result = runner.invoke(cli, ['changelog', '--use-git'])
 
         # Assert
-        self.assertEqual(result.exit_code, 0)
+        self.assertEqual(result.exit_code, 0, msg=result.output)
         first_line = result.output.split('\n')[0]
         self.assertEqual('shorthash,author,date,insertions,deletions,filename', first_line)
