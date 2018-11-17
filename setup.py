@@ -5,12 +5,12 @@ from setuptools import find_packages
 
 setup(
     name='gitanalysis',
-    version='1.0.1',
+    version='1.0.2',
     url='https://github.com/FabienArcellier/gitanalysis',
     author='Fabien Arcellier',
     author_email='fabien.arcellier@gmail.com',
     packages=find_packages(exclude=["*_tests"]),
-    license='Creative Commons Attribution-Noncommercial-Share Alike license',
+    license='MIT license',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     install_requires = [

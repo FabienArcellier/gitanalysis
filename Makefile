@@ -64,3 +64,10 @@ update_requirements: ## update the project dependencies based on setup.py declar
 venv: ## build a virtual env for python 3 in ./venv
 	virtualenv venv -p python3
 	@echo "\"source venv/bin/activate\" to activate the virtual env"
+
+.PHONY: upload
+upload:
+	mkdir -p .tmp
+	. venv/bin/activate; python setup.py sdist --dist-dir ".tmp"
+	. venv/bin/activate; twine upload .tmp/*
+	rm -rf .tmp
