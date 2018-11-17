@@ -5,7 +5,7 @@ from setuptools import find_packages
 
 setup(
     name='gitanalysis',
-    version='1.0.0',
+    version='1.0.1',
     url='https://github.com/FabienArcellier/gitanalysis',
     author='Fabien Arcellier',
     author_email='fabien.arcellier@gmail.com',
@@ -26,7 +26,17 @@ setup(
         'dev': [
             'pylint',
             'coverage',
-            'tox'
+            'tox',
+            'twine'
         ]
-    }
+    },
+    classifiers=[
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.6",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+        "Intended Audience :: Developers",
+        "Environment :: Console",
+        "Development Status :: 5 - Production/Stable"
+    ]
 )
