@@ -34,3 +34,19 @@ class TestChangelog(unittest.TestCase):
         changelog_lines = changelog.split('\n')
         changelog_line_2 = changelog_lines[2].split(',')
         self.assertEqual(changelog_line_2[2], '2018-07-23 11:37:45')
+
+    def test_date_format_should_change_the_output_date_format_into_the_changelog(self):
+        # Assign
+        gitlog = u"""-79e6be4;Fabien Arcellier;Mon Jul 23 13:37:45 2018 +0200
+        2       2       .env.dist
+        1       1       VERSION.in
+                """
+        changelog_handler = Changelog(date_format="%d/%m/%Y %H:%M")
+
+        # Acts
+        changelog = changelog_handler.fromGitlog(gitlog)
+
+        # Assert
+        changelog_lines = changelog.split('\n')
+        changelog_line_2 = changelog_lines[2].split(',')
+        self.assertEqual(changelog_line_2[2], '23/07/2018 11:37')

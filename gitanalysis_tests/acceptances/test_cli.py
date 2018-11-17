@@ -41,3 +41,19 @@ class CliTest(unittest.TestCase):
         self.assertEqual(result.exit_code, 0, msg=result.output)
         first_line = result.output.split('\n')[0]
         self.assertEqual('shorthash,author,date,insertions,deletions,filename', first_line)
+
+    def test_changelog_should_transform_date_on_specific_format(self):
+        # Assign
+        with clone_template('git-log-extract-1') as git_log_extract_directory:
+            with io.open(os.path.join(git_log_extract_directory, 'gitlog.txt')) as f:
+                runner = CliRunner()
+
+                # Acts
+                result = runner.invoke(cli, ['changelog', '--date_format', '%d/%m/%Y'], input=f.read())
+
+                # Assert
+                self.assertEqual(result.exit_code, 0, msg=result.exception)
+                first_line = result.output.split('\n')[0]
+                second_line = result.output.split('\n')[1]
+                self.assertEqual('shorthash,author,date,insertions,deletions,filename', first_line)
+                self.assertEqual('79e6be4,Fabien Arcellier,23/07/2018,2,2,.env.dist', second_line)

@@ -11,12 +11,19 @@ pd.set_option('mode.chained_assignment', None)
 
 class Changelog:
     """
+    :var date_format: datetime format - https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
+    :type date_format: str
+
+
     :see https://www.feststelltaste.de/reading-a-git-log-file-output-with-pandas/
     """
+    def __init__(self, date_format=None):
+        self.date_format = date_format
 
     def fromGitlog(self, gitlog):
         """
         :param gitlog: log reprentation from `git log --pretty=format:'-%h;%an;%ad' --numstat`
+        :type gitlog: str
 
         :rtype: str
         :return: dateframe from git log injected information
@@ -43,7 +50,7 @@ class Changelog:
         commit_data = commit_data[~commit_data.index.isin(commit_info.index)]
         commit_data = commit_data.join(file_stats)
         commit_data.fillna(0)
-        return commit_data.to_csv(index=False)
+        return commit_data.to_csv(index=False, date_format=self.date_format)
 
 def insertions(raw_line):
     return re.split(r"\s+", raw_line)[0]
