@@ -15,7 +15,9 @@ def cli():
 
 @click.command('changelog', help='export a csv changelog from git log')
 @click.option('--use-git', is_flag=True, flag_value=True, help='force the usage of git on the current directory')
-@click.option('--date_format', default=None, help='date format - ref : https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior')
+@click.option('--date_format',
+              default=None,
+              help='date format - ref : https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior')
 def changelog(use_git, date_format):
     git = GitShell()
     stdin = StdinClick()

@@ -5,7 +5,7 @@ from setuptools import find_packages
 
 setup(
     name='gitanalysis',
-    version='1.0.2',
+    version='1.0.3',
     url='https://github.com/FabienArcellier/gitanalysis',
     author='Fabien Arcellier',
     author_email='fabien.arcellier@gmail.com',
