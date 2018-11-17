@@ -46,6 +46,30 @@ pip install gitanalysis
 
 ## Usage
 
+```
+Usage: gitanalysis [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  changelog  export a csv change from git log
+```
+
+### Changelog
+
+```
+Usage: gitanalysis changelog [OPTIONS]
+
+  export a csv change from git log
+
+Options:
+  --use-git           force the usage of git on the current directory
+  --date_format TEXT  date format - ref : https://docs.python.org/3/library/da
+                      tetime.html#strftime-and-strptime-behavior
+  --help              Show this message and exit.
+```
+
 You can run the application with the following command
 
 ```bash
@@ -63,6 +87,19 @@ or with
 ```bash
 git log --pretty=format:'-%h;%an;%ad' --numstat | gitanalysis changelog
 ```
+
+#### date_format option
+
+By default, the exported format is compatible with Excel.
+You may want to use your own date format.
+
+The following example allow to export date using ISO9001 format.
+
+```
+gitanalysis changelog --date_format %Y-%m-%dT%H:%m%sZ
+```
+
+* [supported format](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior)
 
 ## Developper guideline
 
