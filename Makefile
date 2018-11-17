@@ -49,13 +49,16 @@ clean : ## remove all transient directories and files
 	rm -f MANIFEST
 	find -name __pycache__ -print0 | xargs -0 rm -rf
 
-.PHONY: freeze
-freeze: ## freeze the dependencies version in requirements.txt for information
-	. venv/bin/activate; pip freeze | @grep -v "$(APPLICATION_MODULE)" > requirements.txt
-
 .PHONY: install_requirements_dev
 install_requirements_dev: venv ## install pip requirements for development
-	. venv/bin/activate; pip install -r requirements_dev.txt
+	. venv/bin/activate; pip install -e.[dev]
+
+.PHONY: update_requirements
+update_requirements: ## update the project dependencies based on setup.py declaration
+	rm -rf venv
+	virtualenv venv -p python3
+	. venv/bin/activate; pip install .
+	. venv/bin/activate; pip freeze | grep -v "$(APPLICATION_MODULE)" > requirements.txt
 
 .PHONY: venv
 venv: ## build a virtual env for python 3 in ./venv
