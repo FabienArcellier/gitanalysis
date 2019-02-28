@@ -32,7 +32,7 @@ class Changelog:
 
         commit_marker = commits[commits['raw'].str.startswith("-", na=False)]
         commit_info = commit_marker['raw'].str.extract(
-            r"^-(?P<shorthash>.*?);(?P<author>.*?);(?P<date>.*?)$",
+            r"^--(?P<shorthash>.*?)--(?P<date>.*?)--(?P<author>.*?)$",
             expand=True
         )
 

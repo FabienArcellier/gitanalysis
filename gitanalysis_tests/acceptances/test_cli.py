@@ -27,8 +27,8 @@ class CliTest(unittest.TestCase):
                 self.assertEqual(result.exit_code, 0, msg=result.exception)
                 first_line = result.output.split('\n')[0]
                 second_line = result.output.split('\n')[1]
-                self.assertEqual('shorthash,author,date,insertions,deletions,filename', first_line)
-                self.assertEqual('79e6be4,Fabien Arcellier,2018-07-23 11:37:45,2,2,.env.dist', second_line)
+                self.assertEqual('shorthash,date,author,insertions,deletions,filename', first_line)
+                self.assertEqual('b092e02,2018-10-24,Fabien Arcellier,1,1,slidesearch/indexer/application/cli/daemon.py', second_line)
 
     def test_changelog_should_run_git_log_on_working_directory_when_no_pipe_as_input(self):
         # Assign
@@ -40,7 +40,7 @@ class CliTest(unittest.TestCase):
         # Assert
         self.assertEqual(result.exit_code, 0, msg=result.output)
         first_line = result.output.split('\n')[0]
-        self.assertEqual('shorthash,author,date,insertions,deletions,filename', first_line)
+        self.assertEqual('shorthash,date,author,insertions,deletions,filename', first_line)
 
     def test_changelog_should_transform_date_on_specific_format(self):
         # Assign
@@ -55,5 +55,5 @@ class CliTest(unittest.TestCase):
                 self.assertEqual(result.exit_code, 0, msg=result.exception)
                 first_line = result.output.split('\n')[0]
                 second_line = result.output.split('\n')[1]
-                self.assertEqual('shorthash,author,date,insertions,deletions,filename', first_line)
-                self.assertEqual('79e6be4,Fabien Arcellier,23/07/2018,2,2,.env.dist', second_line)
+                self.assertEqual('shorthash,date,author,insertions,deletions,filename', first_line)
+                self.assertEqual('b092e02,24/10/2018,Fabien Arcellier,1,1,slidesearch/indexer/application/cli/daemon.py', second_line)

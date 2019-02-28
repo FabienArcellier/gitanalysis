@@ -1,13 +1,17 @@
--79e6be4;Fabien Arcellier;Mon Jul 23 13:37:45 2018 +0200
-2       2       .env.dist
-1       1       VERSION.in
-2       2       app/config/parameters.php
-4       4       src/AppBundle/Resources/config/services.yml
-2       2       src/Slidesearch/Infrastructures/SlidesearchStorage/IndexHandler.php
--985d57e;Fabien Arcellier;Mon Jul 23 16:00:56 2018 +0200
--80e5be4;Fabien Arcellier;Mon Jul 23 13:37:45 2018 +0200
-2       2       .env.dist
-1       1       VERSION.in
-2       2       app/config/parameters.php
-4       4       src/AppBundle/Resources/config/services.yml
-2       2       src/Slidesearch/Infrastructures/SlidesearchStorage/IndexHandler.php
+--b092e02--2018-10-24--Fabien Arcellier
+1       1       slidesearch/indexer/application/cli/daemon.py
+
+--44ced73--2018-10-22--Fabien Arcellier
+5       1       slidesearch/indexer/lib/workers/documentscrawler.py
+
+--bb6f57d--2018-10-22--Fabien Arcellier
+3       2       slidesearch/indexer/lib/workers/documentscrawler.py
+
+--73313cf--2018-10-12--Fabien Arcellier
+3       1       slidesearch/indexer/application/cli/daemon.py
+22      1       slidesearch_tests/spikes/schedule_run_continuously.py
+
+--1112c29--2018-09-21--Fabien Arcellier
+--cce74c8--2018-09-21--Mathieu Dupuy
+2       1       setup.py
+4       2       slidesearch/indexer/application/cli/daemon.py
