@@ -4,36 +4,31 @@
 
 transform a formatted log from git as csv file
 
-git log - `git log --pretty=format:'-%h;%an;%ad' --numstat`
+git log - `git log --all --numstat --date=short --pretty=format:'--%h--%ad--%aN' --no-renames`
 
 ```
--79e6be4;Fabien Arcellier;Mon Jul 23 13:37:45 2018 +0200
-2       2       .env.dist
-1       1       VERSION.in
-2       2       app/config/parameters.php
-4       4       src/AppBundle/Resources/config/services.yml
-2       2       src/Slidesearch/Infrastructures/SlidesearchStorage/IndexHandler.php
--985d57e;Fabien Arcellier;Mon Jul 23 16:00:56 2018 +0200
--80e5be4;Fabien Arcellier;Mon Jul 23 13:37:45 2018 +0200
-2       2       .env.dist
-1       1       VERSION.in
-2       2       app/config/parameters.php
-4       4       src/AppBundle/Resources/config/services.yml
-2       2       src/Slidesearch/Infrastructures/SlidesearchStorage/IndexHandler.php
+--b092e02--2018-10-24--Fabien Arcellier
+1       1       slidesearch/indexer/application/cli/daemon.py
+
+--44ced73--2018-10-22--Fabien Arcellier
+5       1       slidesearch/indexer/lib/workers/documentscrawler.py
+
+--bb6f57d--2018-10-22--Fabien Arcellier
+3       2       slidesearch/indexer/lib/workers/documentscrawler.py
 ```
 
 changelog expose on stdout as csv file
 
 ```
 shorthash,author,date,insertions,deletions,filename
-c166c30,Fabien Arcellier,2015-08-13 07:10:38,1,9,src/AppBundle/Controller/DefaultController.php
-c166c30,Fabien Arcellier,2015-08-13 07:10:38,0,5,src/AppBundle/Resources/views/default/home.html.twig
-c166c30,Fabien Arcellier,2015-08-13 07:10:38,1,1,src/AppBundle/Resources/views/default/slides.html.twig
-2fc1fdf,Fabien Arcellier,2015-08-01 12:59:28,4,0,README.md
-2fc1fdf,Fabien Arcellier,2015-08-01 12:59:28,7,0,app/.htaccess
-2fc1fdf,Fabien Arcellier,2015-08-01 12:59:28,9,0,app/AppCache.php
-2fc1fdf,Fabien Arcellier,2015-08-01 12:59:28,36,0,app/AppKernel.php
-2fc1fdf,Fabien Arcellier,2015-08-01 12:59:28,13,0,app/Resources/views/base.html.twig
+c166c30,Fabien Arcellier,2015-08-13,1,9,src/AppBundle/Controller/DefaultController.php
+c166c30,Fabien Arcellier,2015-08-13,0,5,src/AppBundle/Resources/views/default/home.html.twig
+c166c30,Fabien Arcellier,2015-08-13,1,1,src/AppBundle/Resources/views/default/slides.html.twig
+2fc1fdf,Fabien Arcellier,2015-08-01,4,0,README.md
+2fc1fdf,Fabien Arcellier,2015-08-01,7,0,app/.htaccess
+2fc1fdf,Fabien Arcellier,2015-08-01,9,0,app/AppCache.php
+2fc1fdf,Fabien Arcellier,2015-08-01,36,0,app/AppKernel.php
+2fc1fdf,Fabien Arcellier,2015-08-01,13,0,app/Resources/views/base.html.twig
 ```
 
 ## The latest version
