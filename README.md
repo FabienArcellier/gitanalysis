@@ -48,21 +48,21 @@ Options:
   --help  Show this message and exit.
 
 Commands:
-  changelog  export a csv change from git log
+  changelog         export a csv changelog from git log
+  effort_by_author  export a csv that list the count of days spent by...
 ```
 
 ### Changelog
 
 ```
-Usage: gitanalysis changelog [OPTIONS]
-
-  export a csv change from git log
+Usage: gitanalysis [OPTIONS] COMMAND [ARGS]...
 
 Options:
-  --use-git           force the usage of git on the current directory
-  --date_format TEXT  date format - ref : https://docs.python.org/3/library/da
-                      tetime.html#strftime-and-strptime-behavior
-  --help              Show this message and exit.
+  --help  Show this message and exit.
+
+Commands:
+  changelog         export a csv changelog from git log
+  effort_by_author  export a csv that list the number of days an author has...
 ```
 
 You can run the application with the following command
@@ -95,6 +95,36 @@ gitanalysis changelog --date_format %Y-%m-%dT%H:%m%sZ
 ```
 
 * [supported format](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior)
+
+### effort_by_author
+
+```
+Usage: gitanalysis effort_by_author [OPTIONS]
+
+  export a csv that list the number of days an author has commit code
+
+Options:
+  --use-git  force the usage of git on the current directory
+  --help     Show this message and exit.
+```
+
+You can run the application with the following command
+
+```bash
+gitanalysis effort_by_author
+```
+
+or with
+
+```bash
+gitanalysis effort_by_author < gitlog.txt
+```
+
+```
+author,effort(days)
+Fabien Arcellier,85
+...
+```
 
 ## Developper guideline
 

@@ -35,7 +35,7 @@ def changelog(use_git, date_format):
         sys.stdout.write(git_changelog)
 
 
-@click.command('effort_by_author', help='export a csv that list the count of days spent by authors')
+@click.command('effort_by_author', help='export a csv that list the number of days an author has commit code')
 @click.option('--use-git', is_flag=True, flag_value=True, help='force the usage of git on the current directory')
 def effort_by_author(use_git):
     git = GitShell()
