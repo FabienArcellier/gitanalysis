@@ -5,7 +5,7 @@ from setuptools import find_packages
 
 setup(
     name='gitanalysis',
-    version='1.0.3',
+    version='1.0.4',
     url='https://github.com/FabienArcellier/gitanalysis',
     author='Fabien Arcellier',
     author_email='fabien.arcellier@gmail.com',
@@ -15,7 +15,8 @@ setup(
     long_description_content_type='text/markdown',
     install_requires = [
         'click',
-        'pandas'
+        'pandas',
+        'numpy'
     ],
     entry_points = {
         'console_scripts': [
