@@ -4,7 +4,6 @@ from io import StringIO
 import re
 
 import pandas as pd
-from pandas import DataFrame
 
 pd.set_option('mode.chained_assignment', None)
 
