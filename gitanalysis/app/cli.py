@@ -1,12 +1,13 @@
 #!/usr/bin/python
 # coding=utf-8
-import sys
+
 import click
 
 from gitanalysis.domain.changelog import Changelog
 from gitanalysis.domain.effort_by_author import EffortByAuthor
 from gitanalysis.infrastructure.git_shell import GitShell
 from gitanalysis.infrastructure.stdin_click import StdinClick
+from gitanalysis.infrastructure.stdout_click import StdoutClick
 
 
 @click.group()
@@ -23,6 +24,7 @@ def changelog(use_git, date_format):
     git = GitShell()
     stdin = StdinClick()
     changelog_ = Changelog(date_format=date_format)
+    stdout = StdoutClick()
 
     if use_git or not stdin.active():
         git_log_raw = git.log()
@@ -32,7 +34,7 @@ def changelog(use_git, date_format):
 
     if git_log_raw is not None:
         git_changelog = changelog_.fromGitlog(git_log_raw)
-        sys.stdout.write(git_changelog)
+        stdout.write(git_changelog)
 
 
 @click.command('effort_by_author', help='export a csv that list the number of days an author has commit code')
@@ -40,6 +42,7 @@ def changelog(use_git, date_format):
 def effort_by_author(use_git):
     git = GitShell()
     stdin = StdinClick()
+    stdout = StdoutClick()
     changelog_ = Changelog()
     _effort_by_author = EffortByAuthor()
 
@@ -52,7 +55,7 @@ def effort_by_author(use_git):
     if git_log_raw is not None:
         git_changelog = changelog_.fromGitlog(git_log_raw)
         effort_log = _effort_by_author.fromChangelog(git_changelog)
-        sys.stdout.write(effort_log)
+        stdout.write(effort_log)
 
 
 cli.add_command(changelog)
